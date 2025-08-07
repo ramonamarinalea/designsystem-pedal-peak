@@ -4,24 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedal Peak Design System</title>
-    <link rel="stylesheet" href="/designsystem/pedal-peak-design-system.css">
+    <link rel="stylesheet" href="pedal-peak-design-system.css">
     <style>
-        .design-system-section {
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--neutral-200);
+        /* Force sharp corners globally */
+        * {
+            border-radius: 0 !important;
         }
-        .design-system-section:last-child {
+        
+        /* Custom focus styles */
+        *:focus {
+            outline: 2px solid black;
+            outline-offset: 2px;
+        }
+        
+        /* Demo specific styles */
+        .demo-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .demo-section:last-child {
             border-bottom: none;
         }
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--neutral-900);
-        }
-        .section-description {
-            color: var(--neutral-600);
+        .demo-grid {
+            display: grid;
+            gap: 2rem;
             margin-bottom: 2rem;
+        }
+        .demo-item {
+            padding: 2rem;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+        }
+        .demo-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #4b5563;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
         }
         .color-grid {
             display: grid;
@@ -31,7 +51,6 @@
         }
         .color-swatch {
             padding: 1rem;
-            border-radius: 0.5rem;
             text-align: center;
             transition: transform 0.2s;
         }
@@ -41,389 +60,499 @@
         .color-name {
             font-size: 0.875rem;
             font-weight: 600;
-            margin-top: 2rem;
+            margin-top: 1rem;
         }
         .color-value {
             font-size: 0.75rem;
             opacity: 0.8;
             font-family: monospace;
         }
-        .component-grid {
-            display: grid;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        .component-example {
-            padding: 2rem;
-            background: var(--neutral-50);
-            border-radius: 0.5rem;
-        }
-        .component-label {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--neutral-600);
-            margin-bottom: 1rem;
-        }
-        .spacing-demo {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .spacing-box {
-            background: var(--primary-100);
-            border: 2px solid var(--primary-500);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--primary-700);
-        }
-        .typography-demo > * {
-            margin-bottom: 1rem;
-        }
-        .icon-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 1rem;
-        }
-        .icon-box {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--neutral-100);
-            border-radius: 0.5rem;
-            font-size: 2rem;
-        }
     </style>
 </head>
-<body>
-    <div class="container">
-        <!-- Header -->
-        <header class="design-system-section">
-            <h1 class="heading-1">Pedal Peak Design System</h1>
-            <p class="body-large">A comprehensive design system for the Pedal Peak cycling platform, featuring components, colors, typography, and utilities optimized for cycling enthusiasts.</p>
-        </header>
+<body class="bg-white text-black">
+    <!-- Navigation -->
+    <nav class="nav container" style="padding: 1rem 0;">
+        <div class="nav-brand">PEDAL PEAK DESIGN SYSTEM</div>
+        <div class="nav-links">
+            <a href="#colors" class="nav-link">Colors</a>
+            <a href="#typography" class="nav-link">Typography</a>
+            <a href="#components" class="nav-link">Components</a>
+            <a href="#cards" class="nav-link">Cards</a>
+            <a href="#layout" class="nav-link">Layout</a>
+        </div>
+    </nav>
 
-        <!-- Colors -->
-        <section class="design-system-section">
-            <h2 class="section-title">Colors</h2>
-            <p class="section-description">Our color palette is inspired by nature and cycling, with a vibrant green primary color representing energy and the outdoors.</p>
+    <!-- Hero -->
+    <section class="demo-section">
+        <div class="container text-center">
+            <h1 class="heading-1" style="font-size: 3rem; margin-bottom: 1rem;">Pedal Peak Design System</h1>
+            <p class="body-large text-muted">Minimalist components for a boutique cycling community platform</p>
+        </div>
+    </section>
+
+    <!-- Color Palette -->
+    <section id="colors" class="demo-section">
+        <div class="container">
+            <h2 class="heading-2">Color Palette</h2>
             
-            <h3 class="heading-3">Primary Colors</h3>
-            <div class="color-grid">
-                <div class="color-swatch" style="background: var(--primary-50); color: var(--primary-900);">
-                    <div class="color-name">Primary 50</div>
-                    <div class="color-value">#f0fdf4</div>
-                </div>
-                <div class="color-swatch" style="background: var(--primary-100); color: var(--primary-900);">
-                    <div class="color-name">Primary 100</div>
-                    <div class="color-value">#dcfce7</div>
-                </div>
-                <div class="color-swatch" style="background: var(--primary-200); color: var(--primary-900);">
-                    <div class="color-name">Primary 200</div>
-                    <div class="color-value">#bbf7d0</div>
-                </div>
-                <div class="color-swatch" style="background: var(--primary-300); color: var(--primary-900);">
-                    <div class="color-name">Primary 300</div>
-                    <div class="color-value">#86efac</div>
-                </div>
-                <div class="color-swatch" style="background: var(--primary-400); color: white;">
-                    <div class="color-name">Primary 400</div>
-                    <div class="color-value">#4ade80</div>
-                </div>
-                <div class="color-swatch" style="background: var(--primary-500); color: white;">
-                    <div class="color-name">Primary 500</div>
-                    <div class="color-value">#22c55e</div>
-                </div>
-                <div class="color-swatch" style="background: var(--primary-600); color: white;">
-                    <div class="color-name">Primary 600</div>
-                    <div class="color-value">#16a34a</div>
-                </div>
-                <div class="color-swatch" style="background: var(--primary-700); color: white;">
-                    <div class="color-name">Primary 700</div>
-                    <div class="color-value">#15803d</div>
-                </div>
-                <div class="color-swatch" style="background: var(--primary-800); color: white;">
-                    <div class="color-name">Primary 800</div>
-                    <div class="color-value">#166534</div>
-                </div>
-                <div class="color-swatch" style="background: var(--primary-900); color: white;">
-                    <div class="color-name">Primary 900</div>
-                    <div class="color-value">#14532d</div>
+            <!-- Primary Colors -->
+            <div class="mb-6">
+                <h3 class="heading-3 text-muted" style="font-size: 1.125rem;">Primary Palette</h3>
+                <div class="color-grid">
+                    <div class="color-swatch" style="background: #000000; color: white;">
+                        <div class="color-name">Black</div>
+                        <div class="color-value">#000000</div>
+                    </div>
+                    <div class="color-swatch" style="background: #ffffff; color: black; border: 1px solid #e5e7eb;">
+                        <div class="color-name">White</div>
+                        <div class="color-value">#FFFFFF</div>
+                    </div>
+                    <div class="color-swatch" style="background: #f3f4f6; color: black;">
+                        <div class="color-name">Light Gray</div>
+                        <div class="color-value">#F3F4F6</div>
+                    </div>
+                    <div class="color-swatch" style="background: #e5e7eb; color: black;">
+                        <div class="color-name">Medium Gray</div>
+                        <div class="color-value">#E5E7EB</div>
+                    </div>
+                    <div class="color-swatch" style="background: #6b7280; color: white;">
+                        <div class="color-name">Dark Gray</div>
+                        <div class="color-value">#6B7280</div>
+                    </div>
+                    <div class="color-swatch" style="background: #111827; color: white;">
+                        <div class="color-name">Charcoal</div>
+                        <div class="color-value">#111827</div>
+                    </div>
                 </div>
             </div>
-
-            <h3 class="heading-3">Neutral Colors</h3>
-            <div class="color-grid">
-                <div class="color-swatch" style="background: var(--neutral-50); color: var(--neutral-900);">
-                    <div class="color-name">Neutral 50</div>
-                    <div class="color-value">#f9fafb</div>
-                </div>
-                <div class="color-swatch" style="background: var(--neutral-100); color: var(--neutral-900);">
-                    <div class="color-name">Neutral 100</div>
-                    <div class="color-value">#f3f4f6</div>
-                </div>
-                <div class="color-swatch" style="background: var(--neutral-200); color: var(--neutral-900);">
-                    <div class="color-name">Neutral 200</div>
-                    <div class="color-value">#e5e7eb</div>
-                </div>
-                <div class="color-swatch" style="background: var(--neutral-300); color: var(--neutral-900);">
-                    <div class="color-name">Neutral 300</div>
-                    <div class="color-value">#d1d5db</div>
-                </div>
-                <div class="color-swatch" style="background: var(--neutral-400); color: white;">
-                    <div class="color-name">Neutral 400</div>
-                    <div class="color-value">#9ca3af</div>
-                </div>
-                <div class="color-swatch" style="background: var(--neutral-500); color: white;">
-                    <div class="color-name">Neutral 500</div>
-                    <div class="color-value">#6b7280</div>
-                </div>
-                <div class="color-swatch" style="background: var(--neutral-600); color: white;">
-                    <div class="color-name">Neutral 600</div>
-                    <div class="color-value">#4b5563</div>
-                </div>
-                <div class="color-swatch" style="background: var(--neutral-700); color: white;">
-                    <div class="color-name">Neutral 700</div>
-                    <div class="color-value">#374151</div>
-                </div>
-                <div class="color-swatch" style="background: var(--neutral-800); color: white;">
-                    <div class="color-name">Neutral 800</div>
-                    <div class="color-value">#1f2937</div>
-                </div>
-                <div class="color-swatch" style="background: var(--neutral-900); color: white;">
-                    <div class="color-name">Neutral 900</div>
-                    <div class="color-value">#111827</div>
-                </div>
-            </div>
-
-            <h3 class="heading-3">Status Colors</h3>
-            <div class="color-grid">
-                <div class="color-swatch" style="background: var(--success); color: white;">
-                    <div class="color-name">Success</div>
-                    <div class="color-value">#10b981</div>
-                </div>
-                <div class="color-swatch" style="background: var(--warning); color: white;">
-                    <div class="color-name">Warning</div>
-                    <div class="color-value">#f59e0b</div>
-                </div>
-                <div class="color-swatch" style="background: var(--error); color: white;">
-                    <div class="color-name">Error</div>
-                    <div class="color-value">#ef4444</div>
-                </div>
-                <div class="color-swatch" style="background: var(--info); color: white;">
-                    <div class="color-name">Info</div>
-                    <div class="color-value">#3b82f6</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Typography -->
-        <section class="design-system-section">
-            <h2 class="section-title">Typography</h2>
-            <p class="section-description">Clean, modern typography that ensures excellent readability across all devices.</p>
             
-            <div class="component-example">
-                <div class="typography-demo">
-                    <h1 class="heading-1">Heading 1 - Bold, 3rem</h1>
-                    <h2 class="heading-2">Heading 2 - Bold, 2rem</h2>
-                    <h3 class="heading-3">Heading 3 - Semibold, 1.5rem</h3>
-                    <h4 class="heading-4">Heading 4 - Semibold, 1.25rem</h4>
-                    <p class="body-large">Body Large - Used for introductory text and emphasis. 1.125rem with relaxed line height.</p>
-                    <p class="body">Body Regular - The standard paragraph text used throughout the application. 1rem with comfortable spacing.</p>
-                    <p class="body-small">Body Small - For secondary information and fine print. 0.875rem size.</p>
-                    <p class="caption">Caption - Used for labels and metadata. 0.75rem with tighter spacing.</p>
+            <!-- Earth Tones -->
+            <div>
+                <h3 class="heading-3 text-muted" style="font-size: 1.125rem;">Earth Tone Accents</h3>
+                <div class="color-grid" style="grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));">
+                    <div class="color-swatch bg-sand" style="background: #D4C5B8; color: white;">
+                        <div class="color-name">Sand</div>
+                        <div class="color-value">#D4C5B8</div>
+                    </div>
+                    <div class="color-swatch bg-clay" style="background: #B8956F; color: white;">
+                        <div class="color-name">Clay</div>
+                        <div class="color-value">#B8956F</div>
+                    </div>
+                    <div class="color-swatch bg-sage" style="background: #9CA89E; color: white;">
+                        <div class="color-name">Sage</div>
+                        <div class="color-value">#9CA89E</div>
+                    </div>
+                    <div class="color-swatch bg-stone" style="background: #8B8680; color: white;">
+                        <div class="color-name">Stone</div>
+                        <div class="color-value">#8B8680</div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Buttons -->
-        <section class="design-system-section">
-            <h2 class="section-title">Buttons</h2>
-            <p class="section-description">Interactive button components with multiple variants and sizes.</p>
+    <!-- Typography -->
+    <section id="typography" class="demo-section">
+        <div class="container">
+            <h2 class="heading-2">Typography</h2>
             
-            <div class="component-grid">
-                <div class="component-example">
-                    <div class="component-label">Button Variants</div>
-                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <div class="grid grid-2">
+                <div>
+                    <div style="margin-bottom: 2rem;">
+                        <p class="caption text-muted">Display (48px)</p>
+                        <h1 class="heading-1" style="font-size: 3rem;">The mountains are calling</h1>
+                    </div>
+                    <div style="margin-bottom: 2rem;">
+                        <p class="caption text-muted">Heading Large (32px)</p>
+                        <h2 class="heading-2">Discover new routes</h2>
+                    </div>
+                    <div>
+                        <p class="caption text-muted">Heading (24px)</p>
+                        <h3 class="heading-3">Join our cycling community</h3>
+                    </div>
+                </div>
+                <div>
+                    <div style="margin-bottom: 2rem;">
+                        <p class="caption text-muted">Body (16px)</p>
+                        <p class="body">
+                            Experience the perfect blend of challenge and beauty on our curated cycling routes 
+                            through the Swiss Alps and beyond.
+                        </p>
+                    </div>
+                    <div style="margin-bottom: 2rem;">
+                        <p class="caption text-muted">Small (14px)</p>
+                        <p class="body-small">
+                            Technical descent requires bike handling skills. Gravel sections comprise 40% of the route.
+                        </p>
+                    </div>
+                    <div>
+                        <p class="caption text-muted">Caption (12px)</p>
+                        <p class="caption">120km • 2,400m elevation • 4-5 hours</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Components -->
+    <section id="components" class="demo-section">
+        <div class="container">
+            <h2 class="heading-2">Components</h2>
+            
+            <div class="grid grid-3">
+                <!-- Buttons -->
+                <div class="demo-item">
+                    <div class="demo-label">Buttons</div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
                         <button class="btn btn-primary">Primary Button</button>
                         <button class="btn btn-secondary">Secondary Button</button>
-                        <button class="btn btn-ghost">Ghost Button</button>
+                        <button class="btn btn-ghost">Text Button</button>
                     </div>
                 </div>
-                
-                <div class="component-example">
-                    <div class="component-label">Button Sizes</div>
-                    <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-                        <button class="btn btn-primary btn-sm">Small</button>
-                        <button class="btn btn-primary">Medium</button>
-                        <button class="btn btn-primary btn-lg">Large</button>
+
+                <!-- Form Elements -->
+                <div class="demo-item">
+                    <div class="demo-label">Form Elements</div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" placeholder="rider@pedalpeak.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Route Preference</label>
+                            <select class="form-select">
+                                <option>Mountain Roads</option>
+                                <option>Gravel Paths</option>
+                                <option>Mixed Terrain</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dropdown Menu -->
+                <div class="demo-item">
+                    <div class="demo-label">Dropdown Menu</div>
+                    <div class="dropdown">
+                        <button class="dropdown-trigger" onclick="toggleDropdown(this)">
+                            Settings
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <div class="dropdown-label">Account</div>
+                            <button class="dropdown-item">Profile</button>
+                            <button class="dropdown-item">Preferences</button>
+                            <div class="dropdown-separator"></div>
+                            <button class="dropdown-item">Routes</button>
+                            <button class="dropdown-item">Events</button>
+                            <div class="dropdown-separator"></div>
+                            <button class="dropdown-item destructive">Logout</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badges -->
+                <div class="demo-item">
+                    <div class="demo-label">Badges</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <span class="badge">ROAD</span>
+                        <span class="badge badge-stone">GRAVEL</span>
+                        <span class="badge badge-sage">BIKEPACKING</span>
+                        <span class="badge badge-clay">RACE</span>
+                        <span class="badge badge-outline">OUTLINE</span>
+                    </div>
+                </div>
+
+                <!-- Alerts -->
+                <div class="demo-item">
+                    <div class="demo-label">Alerts</div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="alert alert-default">
+                            <div class="alert-title">Registration Confirmed</div>
+                            You're signed up for the Alpine Classic ride.
+                        </div>
+                        <div class="alert alert-error">
+                            <div class="alert-title">Weather Alert</div>
+                            Strong winds expected. Consider postponing.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading States -->
+                <div class="demo-item">
+                    <div class="demo-label">Loading States</div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div class="animate-pulse" style="height: 1rem; background: #e5e7eb; width: 100%;"></div>
+                        <div class="animate-pulse" style="height: 1rem; background: #e5e7eb; width: 75%;"></div>
+                        <div class="animate-pulse" style="height: 3rem; background: #e5e7eb; width: 100%;"></div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Cards -->
-        <section class="design-system-section">
-            <h2 class="section-title">Cards</h2>
-            <p class="section-description">Versatile card components for displaying content.</p>
+    <!-- Cards -->
+    <section id="cards" class="demo-section" style="background: #f9fafb;">
+        <div class="container">
+            <h2 class="heading-2">Card Components</h2>
             
-            <div class="grid-2">
+            <div class="grid grid-2">
+                <!-- Route Card -->
+                <div>
+                    <div class="demo-label">Route Card</div>
+                    <div class="route-card">
+                        <div style="display: flex; gap: 1rem;">
+                            <div style="text-align: center; min-width: 60px;">
+                                <div style="font-size: 2rem; font-weight: 300; line-height: 1;">120</div>
+                                <div class="caption uppercase tracking-wide">KM</div>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="display: flex; align-items: start; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <h3 class="heading-4" style="margin: 0;">Alpine Classic</h3>
+                                    <span class="badge">ROAD</span>
+                                </div>
+                                <p class="body-small" style="margin-bottom: 1rem;">A challenging climb through the Swiss Alps with breathtaking mountain views.</p>
+                                <div class="route-stats">
+                                    <span>2400m elevation</span>
+                                    <span>4-5h</span>
+                                    <div class="difficulty-dots" style="margin-left: auto;">
+                                        <div class="difficulty-dot active"></div>
+                                        <div class="difficulty-dot active"></div>
+                                        <div class="difficulty-dot active"></div>
+                                        <div class="difficulty-dot active"></div>
+                                        <div class="difficulty-dot"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Card -->
+                <div>
+                    <div class="demo-label">Event Card</div>
+                    <div class="event-card">
+                        <div style="display: flex; gap: 1rem;">
+                            <div class="event-date">
+                                <div class="event-date-day">15</div>
+                                <div class="event-date-month">APR 2025</div>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="display: flex; align-items: start; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <h3 class="heading-4" style="margin: 0;">Spring Training Camp</h3>
+                                    <span class="badge badge-sage">TRAINING</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                    <span style="color: #B8956F;">📍</span>
+                                    <span class="body-small">Grindelwald, Switzerland</span>
+                                </div>
+                                <p class="body-small" style="margin-bottom: 1rem;">3-day intensive training camp focusing on climbing technique.</p>
+                                <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 0.75rem; border-top: 1px solid #e5e7eb;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <span style="color: #8B8680;">👥</span>
+                                        <span class="body-small">12/20</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                        <span style="font-size: 1.125rem; font-weight: 500;">€299</span>
+                                        <button class="btn btn-primary btn-sm">Register</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Card Examples -->
+            <div class="mt-6 grid grid-3">
                 <div class="card">
-                    <h3 class="heading-3">Basic Card</h3>
-                    <p class="body">This is a basic card component with padding and subtle shadow. Perfect for grouping related content.</p>
-                    <button class="btn btn-primary" style="margin-top: 1rem;">Learn More</button>
+                    <h3 class="heading-4">Basic Card</h3>
+                    <p class="body-small mb-4">Simple card with minimal styling and clean borders.</p>
+                    <button class="btn btn-ghost">Learn more</button>
                 </div>
                 
                 <div class="card card-hover">
-                    <h3 class="heading-3">Hover Card</h3>
-                    <p class="body">This card has a hover effect that elevates it when you mouse over. Great for interactive elements.</p>
-                    <button class="btn btn-secondary" style="margin-top: 1rem;">Explore</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Badges -->
-        <section class="design-system-section">
-            <h2 class="section-title">Badges</h2>
-            <p class="section-description">Small components for labeling and categorization.</p>
-            
-            <div class="component-example">
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <span class="badge">Default</span>
-                    <span class="badge badge-success">Success</span>
-                    <span class="badge badge-warning">Warning</span>
-                    <span class="badge badge-error">Error</span>
-                    <span class="badge badge-info">Info</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Spacing -->
-        <section class="design-system-section">
-            <h2 class="section-title">Spacing</h2>
-            <p class="section-description">Consistent spacing scale for margins and padding.</p>
-            
-            <div class="component-example">
-                <div class="spacing-demo">
-                    <div class="spacing-box" style="width: 8px; height: 48px;">1</div>
-                    <div class="spacing-box" style="width: 16px; height: 48px;">2</div>
-                    <div class="spacing-box" style="width: 24px; height: 48px;">3</div>
-                    <div class="spacing-box" style="width: 32px; height: 48px;">4</div>
-                    <div class="spacing-box" style="width: 48px; height: 48px;">6</div>
-                    <div class="spacing-box" style="width: 64px; height: 48px;">8</div>
-                    <div class="spacing-box" style="width: 96px; height: 48px;">12</div>
-                    <div class="spacing-box" style="width: 128px; height: 48px;">16</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Grid System -->
-        <section class="design-system-section">
-            <h2 class="section-title">Grid System</h2>
-            <p class="section-description">Responsive grid layouts for organizing content.</p>
-            
-            <div class="component-example">
-                <div class="component-label">2 Column Grid</div>
-                <div class="grid-2" style="margin-bottom: 2rem;">
-                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">Column 1</div>
-                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">Column 2</div>
+                    <h3 class="heading-4">Hover Effect Card</h3>
+                    <p class="body-small mb-4">Card with shadow on hover for interactive elements.</p>
+                    <button class="btn btn-ghost">Explore</button>
                 </div>
                 
-                <div class="component-label">3 Column Grid</div>
-                <div class="grid-3" style="margin-bottom: 2rem;">
-                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">Col 1</div>
-                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">Col 2</div>
-                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">Col 3</div>
-                </div>
-                
-                <div class="component-label">4 Column Grid</div>
-                <div class="grid-4">
-                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">1</div>
-                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">2</div>
-                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">3</div>
-                    <div style="background: var(--primary-100); padding: 2rem; border-radius: 0.5rem; text-align: center;">4</div>
+                <div class="card card-inverted">
+                    <h3 class="heading-4" style="color: white;">Inverted Card</h3>
+                    <p class="body-small mb-4" style="color: #d1d5db;">Dark card for special emphasis or featured content.</p>
+                    <button class="btn btn-inverted">View details</button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Animations -->
-        <section class="design-system-section">
-            <h2 class="section-title">Animations</h2>
-            <p class="section-description">Smooth animations and transitions for enhanced user experience.</p>
+    <!-- Layout Examples -->
+    <section id="layout" class="demo-section">
+        <div class="container">
+            <h2 class="heading-2">Layout & Spacing</h2>
             
-            <div class="component-grid">
-                <div class="component-example">
-                    <div class="component-label">Fade In Animation</div>
-                    <div class="card fade-in">
-                        <p>This element fades in when it appears.</p>
-                    </div>
-                </div>
+            <!-- Navigation Examples -->
+            <div class="mb-8">
+                <h3 class="heading-3">Navigation Patterns</h3>
                 
-                <div class="component-example">
-                    <div class="component-label">Slide Up Animation</div>
-                    <div class="card slide-up">
-                        <p>This element slides up when it appears.</p>
+                <!-- Desktop Nav -->
+                <div class="mb-6">
+                    <div class="demo-label">Desktop Navigation</div>
+                    <div class="card">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <div class="nav-brand">PEDAL PEAK</div>
+                            <div class="nav-links">
+                                <a href="#" class="nav-link">Routes</a>
+                                <a href="#" class="nav-link">Club</a>
+                                <a href="#" class="nav-link active">Events</a>
+                                <a href="#" class="nav-link">Trips</a>
+                            </div>
+                            <div class="nav-links">
+                                <a href="#" class="nav-link">Search</a>
+                                <a href="#" class="nav-link">Account</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Icons -->
-        <section class="design-system-section">
-            <h2 class="section-title">Icons</h2>
-            <p class="section-description">Cycling-themed icons and symbols.</p>
-            
-            <div class="icon-grid">
-                <div class="icon-box">🚴</div>
-                <div class="icon-box">⛰️</div>
-                <div class="icon-box">🗺️</div>
-                <div class="icon-box">📍</div>
-                <div class="icon-box">⏱️</div>
-                <div class="icon-box">🏆</div>
-                <div class="icon-box">👥</div>
-                <div class="icon-box">📊</div>
-            </div>
-        </section>
-
-        <!-- Utilities -->
-        <section class="design-system-section">
-            <h2 class="section-title">Utility Classes</h2>
-            <p class="section-description">Helper classes for common styling needs.</p>
-            
-            <div class="component-example">
-                <div class="component-label">Text Utilities</div>
-                <p class="text-center">Center aligned text</p>
-                <p class="text-right">Right aligned text</p>
-                <p class="text-muted">Muted text color</p>
-                <p class="font-bold">Bold text weight</p>
+            <!-- Grid Examples -->
+            <div class="mb-8">
+                <h3 class="heading-3">Grid Layouts</h3>
                 
-                <div class="component-label" style="margin-top: 2rem;">Display Utilities</div>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <div class="badge">flex</div>
-                    <div class="badge">flex-col</div>
-                    <div class="badge">items-center</div>
-                    <div class="badge">justify-center</div>
-                    <div class="badge">gap-1 to gap-8</div>
+                <!-- Two Column -->
+                <div class="mb-6">
+                    <div class="demo-label">Two Column</div>
+                    <div class="grid grid-2">
+                        <div class="demo-item text-center">Column 1</div>
+                        <div class="demo-item text-center">Column 2</div>
+                    </div>
                 </div>
                 
-                <div class="component-label" style="margin-top: 2rem;">Spacing Utilities</div>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <div class="badge badge-info">m-1 to m-8</div>
-                    <div class="badge badge-info">p-1 to p-8</div>
-                    <div class="badge badge-info">mt, mb, ml, mr</div>
-                    <div class="badge badge-info">pt, pb, pl, pr</div>
+                <!-- Three Column -->
+                <div class="mb-6">
+                    <div class="demo-label">Three Column</div>
+                    <div class="grid grid-3">
+                        <div class="demo-item text-center">Column 1</div>
+                        <div class="demo-item text-center">Column 2</div>
+                        <div class="demo-item text-center">Column 3</div>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Footer -->
-        <footer class="design-system-section text-center">
-            <p class="text-muted">© 2025 Pedal Peak Design System</p>
-            <p class="caption">Built with passion for cycling enthusiasts</p>
-        </footer>
-    </div>
+            <!-- Data Display -->
+            <div>
+                <h3 class="heading-3">Data Display</h3>
+                
+                <!-- Route Statistics -->
+                <div class="mb-6">
+                    <div class="demo-label">Route Statistics</div>
+                    <table class="table" style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid #e5e7eb;">
+                                <th style="padding: 0.75rem; text-align: left; font-weight: 500;">Route</th>
+                                <th style="padding: 0.75rem; text-align: right; font-weight: 500;">Distance</th>
+                                <th style="padding: 0.75rem; text-align: right; font-weight: 500;">Elevation</th>
+                                <th style="padding: 0.75rem; text-align: right; font-weight: 500;">Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f3f4f6;">
+                                <td style="padding: 0.75rem; font-size: 0.875rem;">Alpine Classic</td>
+                                <td style="padding: 0.75rem; text-align: right; font-size: 0.875rem;">120km</td>
+                                <td style="padding: 0.75rem; text-align: right; font-size: 0.875rem;">2,400m</td>
+                                <td style="padding: 0.75rem; text-align: right; font-size: 0.875rem;">4-5h</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f3f4f6;">
+                                <td style="padding: 0.75rem; font-size: 0.875rem;">Gravel Explorer</td>
+                                <td style="padding: 0.75rem; text-align: right; font-size: 0.875rem;">85km</td>
+                                <td style="padding: 0.75rem; text-align: right; font-size: 0.875rem;">1,200m</td>
+                                <td style="padding: 0.75rem; text-align: right; font-size: 0.875rem;">3-4h</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.75rem; font-size: 0.875rem;">Lake Loop</td>
+                                <td style="padding: 0.75rem; text-align: right; font-size: 0.875rem;">65km</td>
+                                <td style="padding: 0.75rem; text-align: right; font-size: 0.875rem;">450m</td>
+                                <td style="padding: 0.75rem; text-align: right; font-size: 0.875rem;">2-3h</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="demo-section bg-black text-white">
+        <div class="container">
+            <div class="grid grid-3">
+                <div>
+                    <h3 class="heading-3 uppercase tracking-wide" style="color: white; margin-bottom: 1rem;">PEDAL PEAK</h3>
+                    <p class="body-small" style="color: #d1d5db;">Curated cycling experiences</p>
+                </div>
+                <div>
+                    <h3 class="heading-4 uppercase tracking-wide" style="color: white; margin-bottom: 1rem;">Connect</h3>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <p class="body-small" style="color: #d1d5db;">Newsletter</p>
+                        <p class="body-small" style="color: #d1d5db;">Instagram</p>
+                        <p class="body-small" style="color: #d1d5db;">Strava</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="heading-4 uppercase tracking-wide" style="color: white; margin-bottom: 1rem;">Join Our Club</h3>
+                    <p class="body-small" style="color: #d1d5db;">members@pedalpeak.com</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #374151; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <p class="caption" style="color: #d1d5db;">© 2025 Pedal Peak</p>
+                <div style="display: flex; gap: 1rem;">
+                    <span class="caption" style="color: #d1d5db;">Privacy</span>
+                    <span class="caption" style="color: #d1d5db;">Terms</span>
+                </div>
+                <p class="caption" style="color: #d1d5db;">Zürich, Switzerland</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleDropdown(trigger) {
+            const content = trigger.nextElementSibling;
+            const isOpen = content.classList.contains('open');
+            
+            // Close all dropdowns first
+            document.querySelectorAll('.dropdown-content.open').forEach(dropdown => {
+                dropdown.classList.remove('open');
+                dropdown.previousElementSibling.setAttribute('aria-expanded', 'false');
+            });
+            
+            // Toggle current dropdown
+            if (!isOpen) {
+                content.classList.add('open');
+                trigger.setAttribute('aria-expanded', 'true');
+            } else {
+                trigger.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-content.open').forEach(dropdown => {
+                    dropdown.classList.remove('open');
+                    dropdown.previousElementSibling.setAttribute('aria-expanded', 'false');
+                });
+            }
+        });
+
+        // Handle dropdown keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.dropdown-content.open').forEach(dropdown => {
+                    dropdown.classList.remove('open');
+                    dropdown.previousElementSibling.setAttribute('aria-expanded', 'false');
+                    dropdown.previousElementSibling.focus();
+                });
+            }
+        });
+    </script>
 </body>
 </html>
