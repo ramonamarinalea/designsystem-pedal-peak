@@ -220,11 +220,24 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">Route Preference</label>
-                            <select class="form-select">
-                                <option>Mountain Roads</option>
-                                <option>Gravel Paths</option>
-                                <option>Mixed Terrain</option>
-                            </select>
+                            <div style="position: relative; display: inline-block; width: 100%;">
+                                <button class="btn btn-secondary" onclick="toggleRoutePreference(this)" style="width: 100%; justify-content: space-between; text-align: left;" aria-expanded="false">
+                                    <span id="selected-route">Mountain Roads</span>
+                                    <span style="transition: transform 0.2s;" id="route-chevron">▼</span>
+                                </button>
+                                
+                                <div id="route-dropdown" data-radix-dropdown-menu-content style="display: none; position: absolute; top: 100%; left: 0; width: 100%; margin-top: 0.25rem; z-index: 1000;">
+                                    <div data-radix-dropdown-menu-item onclick="selectRoute(this, 'Mountain Roads')" onmouseenter="this.setAttribute('data-highlighted', 'true')" onmouseleave="this.setAttribute('data-highlighted', 'false')">
+                                        <span>Mountain Roads</span>
+                                    </div>
+                                    <div data-radix-dropdown-menu-item onclick="selectRoute(this, 'Gravel Paths')" onmouseenter="this.setAttribute('data-highlighted', 'true')" onmouseleave="this.setAttribute('data-highlighted', 'false')">
+                                        <span>Gravel Paths</span>
+                                    </div>
+                                    <div data-radix-dropdown-menu-item onclick="selectRoute(this, 'Mixed Terrain')" onmouseenter="this.setAttribute('data-highlighted', 'true')" onmouseleave="this.setAttribute('data-highlighted', 'false')">
+                                        <span>Mixed Terrain</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -576,14 +589,53 @@
             }
         }
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            const dropdown = document.getElementById('demo-dropdown');
-            const button = event.target.closest('button[onclick*="toggleShadcnDemo"]');
+        // Route preference dropdown functions
+        function toggleRoutePreference(button) {
+            const dropdown = document.getElementById('route-dropdown');
+            const chevron = document.getElementById('route-chevron');
+            const isVisible = dropdown.style.display !== 'none';
             
-            if (!button && !dropdown.contains(event.target)) {
+            // Close other dropdowns first
+            document.getElementById('demo-dropdown').style.display = 'none';
+            document.getElementById('chevron').style.transform = 'rotate(0deg)';
+            
+            if (isVisible) {
                 dropdown.style.display = 'none';
+                chevron.style.transform = 'rotate(0deg)';
+                button.setAttribute('aria-expanded', 'false');
+            } else {
+                dropdown.style.display = 'block';
+                chevron.style.transform = 'rotate(180deg)';
+                button.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        function selectRoute(item, routeName) {
+            document.getElementById('selected-route').textContent = routeName;
+            document.getElementById('route-dropdown').style.display = 'none';
+            document.getElementById('route-chevron').style.transform = 'rotate(0deg)';
+            
+            const button = document.querySelector('button[onclick*="toggleRoutePreference"]');
+            button.setAttribute('aria-expanded', 'false');
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            const demoDropdown = document.getElementById('demo-dropdown');
+            const routeDropdown = document.getElementById('route-dropdown');
+            
+            const demoButton = event.target.closest('button[onclick*="toggleShadcnDemo"]');
+            const routeButton = event.target.closest('button[onclick*="toggleRoutePreference"]');
+            
+            if (!demoButton && !demoDropdown.contains(event.target)) {
+                demoDropdown.style.display = 'none';
                 document.getElementById('chevron').style.transform = 'rotate(0deg)';
+            }
+            
+            if (!routeButton && !routeDropdown.contains(event.target)) {
+                routeDropdown.style.display = 'none';
+                document.getElementById('route-chevron').style.transform = 'rotate(0deg)';
+                if (routeButton) routeButton.setAttribute('aria-expanded', 'false');
             }
         });
 
