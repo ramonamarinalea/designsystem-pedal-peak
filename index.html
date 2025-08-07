@@ -229,78 +229,62 @@
                     </div>
                 </div>
 
-                <!-- Dropdown Menu -->
+                <!-- Shadcn/UI Dropdown Menu -->
                 <div class="demo-item">
-                    <div class="demo-label">Shadcn/UI Dropdown</div>
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div class="demo-label">Shadcn/UI Dropdown Menu</div>
+                    <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 1rem;">
+                        This dropdown will be styled by the actual Radix UI data attributes when you install the shadcn/ui component.
+                    </p>
+                    <div style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;">
                         
-                        <!-- Basic Dropdown -->
-                        <div class="dropdown">
-                            <button class="btn btn-secondary" onclick="toggleShadcnDropdown(this)" aria-expanded="false">
-                                Open Menu
+                        <!-- Example markup for shadcn/ui dropdown -->
+                        <div style="position: relative;">
+                            <button class="btn btn-secondary">
+                                Open
                                 <span style="margin-left: 0.5rem;">▼</span>
                             </button>
-                            <div class="dropdown-menu-content" data-state="closed" style="position: absolute; top: 100%; left: 0; margin-top: 0.25rem;">
-                                <div class="dropdown-menu-label">My Account</div>
-                                <div class="dropdown-menu-item" data-highlighted="false">
+                            
+                            <!-- This would be rendered by Radix UI with proper data attributes -->
+                            <div style="display: none; position: absolute; top: 100%; left: 0; margin-top: 0.25rem; min-width: 14rem; background: white; border: 1px solid #e5e7eb; padding: 0.25rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                                <div style="padding: 0.375rem 0.5rem; font-size: 0.75rem; font-weight: 600; color: #6b7280;">My Account</div>
+                                <div style="display: flex; align-items: center; padding: 0.375rem 0.5rem; font-size: 0.875rem; cursor: default;">
                                     <span>Profile</span>
-                                    <span class="dropdown-menu-shortcut">⇧⌘P</span>
+                                    <span style="margin-left: auto; font-size: 0.75rem; color: #9ca3af; font-family: monospace;">⇧⌘P</span>
                                 </div>
-                                <div class="dropdown-menu-item" data-highlighted="false">
+                                <div style="display: flex; align-items: center; padding: 0.375rem 0.5rem; font-size: 0.875rem; cursor: default;">
                                     <span>Settings</span>
-                                    <span class="dropdown-menu-shortcut">⌘,</span>
+                                    <span style="margin-left: auto; font-size: 0.75rem; color: #9ca3af; font-family: monospace;">⌘,</span>
                                 </div>
-                                <div class="dropdown-menu-separator"></div>
-                                <div class="dropdown-menu-item" data-highlighted="false">
+                                <div style="height: 1px; background-color: #e5e7eb; margin: 0.25rem -0.25rem;"></div>
+                                <div style="display: flex; align-items: center; padding: 0.375rem 0.5rem; font-size: 0.875rem; cursor: default;">
                                     <span>Team</span>
                                 </div>
-                                <div class="dropdown-menu-item" data-highlighted="false">
+                                <div style="display: flex; align-items: center; padding: 0.375rem 0.5rem; font-size: 0.875rem; cursor: default;">
                                     <span>Invite users</span>
                                 </div>
-                                <div class="dropdown-menu-separator"></div>
-                                <div class="dropdown-menu-item destructive" data-highlighted="false">
+                                <div style="height: 1px; background-color: #e5e7eb; margin: 0.25rem -0.25rem;"></div>
+                                <div style="display: flex; align-items: center; padding: 0.375rem 0.5rem; font-size: 0.875rem; cursor: default; color: #ef4444;">
                                     <span>Log out</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Dropdown with Checkboxes -->
-                        <div class="dropdown">
-                            <button class="btn btn-secondary" onclick="toggleShadcnDropdown(this)" aria-expanded="false">
-                                Preferences
-                                <span style="margin-left: 0.5rem;">▼</span>
-                            </button>
-                            <div class="dropdown-menu-content" data-state="closed" style="position: absolute; top: 100%; left: 0; margin-top: 0.25rem;">
-                                <div class="dropdown-menu-label">Appearance</div>
-                                <div class="dropdown-menu-checkbox-item" data-state="checked" data-highlighted="false">
-                                    <div class="dropdown-menu-item-indicator"></div>
-                                    <span>Status Bar</span>
-                                </div>
-                                <div class="dropdown-menu-checkbox-item" data-state="unchecked" data-highlighted="false">
-                                    <div class="dropdown-menu-item-indicator"></div>
-                                    <span>Activity Bar</span>
-                                </div>
-                                <div class="dropdown-menu-checkbox-item" data-state="checked" data-highlighted="false">
-                                    <div class="dropdown-menu-item-indicator"></div>
-                                    <span>Panel</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Legacy Dropdown (backward compatibility) -->
-                        <div class="dropdown">
-                            <button class="dropdown-trigger" onclick="toggleDropdown(this)">
-                                Legacy Menu
-                                <span>▼</span>
-                            </button>
-                            <div class="dropdown-content">
-                                <div class="dropdown-label">Account</div>
-                                <button class="dropdown-item">Profile</button>
-                                <button class="dropdown-item">Settings</button>
-                                <div class="dropdown-separator"></div>
-                                <button class="dropdown-item">Logout</button>
-                            </div>
-                        </div>
+                        <!-- Code example -->
+                        <div style="background: #f9fafb; padding: 1rem; border: 1px solid #e5e7eb; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; max-width: 100%; overflow-x: auto;">
+{`<DropdownMenu>
+  <DropdownMenuTrigger asChild>
+    <Button variant="outline">Open</Button>
+  </DropdownMenuTrigger>
+  <DropdownMenuContent className="w-56">
+    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem>
+      Profile
+      <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+    </DropdownMenuItem>
+    <DropdownMenuItem>Settings</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>`}</div>
                     </div>
                 </div>
 
@@ -568,117 +552,13 @@
     </footer>
 
     <script>
-        // Shadcn/UI Dropdown functionality
-        function toggleShadcnDropdown(trigger) {
-            const content = trigger.nextElementSibling;
-            const isOpen = content.getAttribute('data-state') === 'open';
-            
-            // Close all shadcn dropdowns first
-            document.querySelectorAll('.dropdown-menu-content[data-state="open"]').forEach(dropdown => {
-                dropdown.setAttribute('data-state', 'closed');
-                dropdown.previousElementSibling.setAttribute('aria-expanded', 'false');
-            });
-            
-            // Toggle current dropdown
-            if (!isOpen) {
-                content.setAttribute('data-state', 'open');
-                trigger.setAttribute('aria-expanded', 'true');
-                
-                // Add hover handlers for menu items
-                const items = content.querySelectorAll('.dropdown-menu-item, .dropdown-menu-checkbox-item');
-                items.forEach(item => {
-                    item.addEventListener('mouseenter', () => {
-                        // Remove highlight from all items
-                        items.forEach(i => i.setAttribute('data-highlighted', 'false'));
-                        // Highlight current item
-                        item.setAttribute('data-highlighted', 'true');
-                    });
-                    
-                    item.addEventListener('mouseleave', () => {
-                        item.setAttribute('data-highlighted', 'false');
-                    });
-                    
-                    // Handle checkbox toggle
-                    if (item.classList.contains('dropdown-menu-checkbox-item')) {
-                        item.addEventListener('click', () => {
-                            const currentState = item.getAttribute('data-state');
-                            const newState = currentState === 'checked' ? 'unchecked' : 'checked';
-                            item.setAttribute('data-state', newState);
-                        });
-                    }
-                });
-            }
-        }
-
-        // Legacy dropdown functionality (backward compatibility)
-        function toggleDropdown(trigger) {
-            const content = trigger.nextElementSibling;
-            const isOpen = content.classList.contains('open');
-            
-            // Close all legacy dropdowns first
-            document.querySelectorAll('.dropdown-content.open').forEach(dropdown => {
-                dropdown.classList.remove('open');
-                dropdown.previousElementSibling.setAttribute('aria-expanded', 'false');
-            });
-            
-            // Toggle current dropdown
-            if (!isOpen) {
-                content.classList.add('open');
-                trigger.setAttribute('aria-expanded', 'true');
-            } else {
-                trigger.setAttribute('aria-expanded', 'false');
-            }
-        }
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.dropdown')) {
-                // Close shadcn dropdowns
-                document.querySelectorAll('.dropdown-menu-content[data-state="open"]').forEach(dropdown => {
-                    dropdown.setAttribute('data-state', 'closed');
-                    dropdown.previousElementSibling.setAttribute('aria-expanded', 'false');
-                });
-                
-                // Close legacy dropdowns
-                document.querySelectorAll('.dropdown-content.open').forEach(dropdown => {
-                    dropdown.classList.remove('open');
-                    dropdown.previousElementSibling.setAttribute('aria-expanded', 'false');
-                });
-            }
-        });
-
-        // Handle dropdown keyboard navigation
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                // Close shadcn dropdowns
-                document.querySelectorAll('.dropdown-menu-content[data-state="open"]').forEach(dropdown => {
-                    dropdown.setAttribute('data-state', 'closed');
-                    dropdown.previousElementSibling.setAttribute('aria-expanded', 'false');
-                    dropdown.previousElementSibling.focus();
-                });
-                
-                // Close legacy dropdowns
-                document.querySelectorAll('.dropdown-content.open').forEach(dropdown => {
-                    dropdown.classList.remove('open');
-                    dropdown.previousElementSibling.setAttribute('aria-expanded', 'false');
-                    dropdown.previousElementSibling.focus();
-                });
-            }
-        });
-
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set initial states for all dropdown items
-            document.querySelectorAll('.dropdown-menu-item, .dropdown-menu-checkbox-item').forEach(item => {
-                if (!item.hasAttribute('data-highlighted')) {
-                    item.setAttribute('data-highlighted', 'false');
-                }
-                
-                if (item.classList.contains('dropdown-menu-checkbox-item') && !item.hasAttribute('data-state')) {
-                    item.setAttribute('data-state', 'unchecked');
-                }
-            });
-        });
+        // Minimal JavaScript for design system demos only
+        // The actual shadcn/ui dropdown uses Radix UI primitives
+        
+        console.log('Pedal Peak Design System loaded');
+        
+        // Any demo-specific functionality can go here
+        // Actual shadcn/ui dropdowns don't need custom JavaScript
     </script>
 </body>
 </html>
