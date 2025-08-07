@@ -242,73 +242,6 @@
                     </div>
                 </div>
 
-                <!-- Shadcn/UI Dropdown Menu -->
-                <div class="demo-item">
-                    <div class="demo-label">Shadcn/UI Dropdown Menu</div>
-                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                        
-                        <!-- Working Demo -->
-                        <div>
-                            <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 1rem;">
-                                Interactive demo showing how shadcn/ui dropdown appears:
-                            </p>
-                            <div style="position: relative; display: inline-block;">
-                                <button class="btn btn-secondary" onclick="toggleShadcnDemo(this)">
-                                    Open
-                                    <span style="margin-left: 0.5rem; transition: transform 0.2s;" id="chevron">▼</span>
-                                </button>
-                                
-                                <div id="demo-dropdown" data-radix-dropdown-menu-content style="display: none; position: absolute; top: 100%; left: 0; margin-top: 0.25rem; z-index: 1000;">
-                                    <div data-radix-dropdown-menu-label>My Account</div>
-                                    <div data-radix-dropdown-menu-item onmouseenter="this.setAttribute('data-highlighted', 'true')" onmouseleave="this.setAttribute('data-highlighted', 'false')">
-                                        <span>Profile</span>
-                                        <span data-radix-dropdown-menu-shortcut>⇧⌘P</span>
-                                    </div>
-                                    <div data-radix-dropdown-menu-item onmouseenter="this.setAttribute('data-highlighted', 'true')" onmouseleave="this.setAttribute('data-highlighted', 'false')">
-                                        <span>Settings</span>
-                                        <span data-radix-dropdown-menu-shortcut>⌘,</span>
-                                    </div>
-                                    <div data-radix-dropdown-menu-separator></div>
-                                    <div data-radix-dropdown-menu-item onmouseenter="this.setAttribute('data-highlighted', 'true')" onmouseleave="this.setAttribute('data-highlighted', 'false')">
-                                        <span>Team</span>
-                                    </div>
-                                    <div data-radix-dropdown-menu-item onmouseenter="this.setAttribute('data-highlighted', 'true')" onmouseleave="this.setAttribute('data-highlighted', 'false')">
-                                        <span>Invite users</span>
-                                    </div>
-                                    <div data-radix-dropdown-menu-separator></div>
-                                    <div data-radix-dropdown-menu-item onmouseenter="this.setAttribute('data-highlighted', 'true')" onmouseleave="this.setAttribute('data-highlighted', 'false')" style="color: #ef4444;">
-                                        <span>Log out</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Installation Instructions -->
-                        <div>
-                            <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">Installation</h4>
-                            <div style="background: #f9fafb; padding: 1rem; border: 1px solid #e5e7eb; font-family: monospace; font-size: 0.8125rem;">npx shadcn@latest add dropdown-menu</div>
-                        </div>
-
-                        <!-- Usage Example -->
-                        <div>
-                            <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">Usage</h4>
-                            <div style="background: #f9fafb; padding: 1rem; border: 1px solid #e5e7eb; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; overflow-x: auto;">&lt;DropdownMenu&gt;
-  &lt;DropdownMenuTrigger asChild&gt;
-    &lt;Button variant="outline"&gt;Open&lt;/Button&gt;
-  &lt;/DropdownMenuTrigger&gt;
-  &lt;DropdownMenuContent className="w-56"&gt;
-    &lt;DropdownMenuLabel&gt;My Account&lt;/DropdownMenuLabel&gt;
-    &lt;DropdownMenuSeparator /&gt;
-    &lt;DropdownMenuItem&gt;
-      Profile
-      &lt;DropdownMenuShortcut&gt;⇧⌘P&lt;/DropdownMenuShortcut&gt;
-    &lt;/DropdownMenuItem&gt;
-    &lt;DropdownMenuItem&gt;Settings&lt;/DropdownMenuItem&gt;
-  &lt;/DropdownMenuContent&gt;
-&lt;/DropdownMenu&gt;</div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Badges -->
                 <div class="demo-item">
@@ -574,30 +507,11 @@
     </footer>
 
     <script>
-        // Demo function for shadcn/ui dropdown showcase
-        function toggleShadcnDemo(button) {
-            const dropdown = document.getElementById('demo-dropdown');
-            const chevron = document.getElementById('chevron');
-            const isVisible = dropdown.style.display !== 'none';
-            
-            if (isVisible) {
-                dropdown.style.display = 'none';
-                chevron.style.transform = 'rotate(0deg)';
-            } else {
-                dropdown.style.display = 'block';
-                chevron.style.transform = 'rotate(180deg)';
-            }
-        }
-
         // Route preference dropdown functions
         function toggleRoutePreference(button) {
             const dropdown = document.getElementById('route-dropdown');
             const chevron = document.getElementById('route-chevron');
             const isVisible = dropdown.style.display !== 'none';
-            
-            // Close other dropdowns first
-            document.getElementById('demo-dropdown').style.display = 'none';
-            document.getElementById('chevron').style.transform = 'rotate(0deg)';
             
             if (isVisible) {
                 dropdown.style.display = 'none';
@@ -619,23 +533,16 @@
             button.setAttribute('aria-expanded', 'false');
         }
 
-        // Close dropdowns when clicking outside
+        // Close dropdown when clicking outside
         document.addEventListener('click', function(event) {
-            const demoDropdown = document.getElementById('demo-dropdown');
             const routeDropdown = document.getElementById('route-dropdown');
-            
-            const demoButton = event.target.closest('button[onclick*="toggleShadcnDemo"]');
             const routeButton = event.target.closest('button[onclick*="toggleRoutePreference"]');
-            
-            if (!demoButton && !demoDropdown.contains(event.target)) {
-                demoDropdown.style.display = 'none';
-                document.getElementById('chevron').style.transform = 'rotate(0deg)';
-            }
             
             if (!routeButton && !routeDropdown.contains(event.target)) {
                 routeDropdown.style.display = 'none';
                 document.getElementById('route-chevron').style.transform = 'rotate(0deg)';
-                if (routeButton) routeButton.setAttribute('aria-expanded', 'false');
+                const button = document.querySelector('button[onclick*="toggleRoutePreference"]');
+                if (button) button.setAttribute('aria-expanded', 'false');
             }
         });
 
