@@ -232,59 +232,68 @@
                 <!-- Shadcn/UI Dropdown Menu -->
                 <div class="demo-item">
                     <div class="demo-label">Shadcn/UI Dropdown Menu</div>
-                    <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 1rem;">
-                        This dropdown will be styled by the actual Radix UI data attributes when you install the shadcn/ui component.
-                    </p>
-                    <div style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;">
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                         
-                        <!-- Example markup for shadcn/ui dropdown -->
-                        <div style="position: relative;">
-                            <button class="btn btn-secondary">
-                                Open
-                                <span style="margin-left: 0.5rem;">▼</span>
-                            </button>
-                            
-                            <!-- This would be rendered by Radix UI with proper data attributes -->
-                            <div style="display: none; position: absolute; top: 100%; left: 0; margin-top: 0.25rem; min-width: 14rem; background: white; border: 1px solid #e5e7eb; padding: 0.25rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
-                                <div style="padding: 0.375rem 0.5rem; font-size: 0.75rem; font-weight: 600; color: #6b7280;">My Account</div>
-                                <div style="display: flex; align-items: center; padding: 0.375rem 0.5rem; font-size: 0.875rem; cursor: default;">
-                                    <span>Profile</span>
-                                    <span style="margin-left: auto; font-size: 0.75rem; color: #9ca3af; font-family: monospace;">⇧⌘P</span>
-                                </div>
-                                <div style="display: flex; align-items: center; padding: 0.375rem 0.5rem; font-size: 0.875rem; cursor: default;">
-                                    <span>Settings</span>
-                                    <span style="margin-left: auto; font-size: 0.75rem; color: #9ca3af; font-family: monospace;">⌘,</span>
-                                </div>
-                                <div style="height: 1px; background-color: #e5e7eb; margin: 0.25rem -0.25rem;"></div>
-                                <div style="display: flex; align-items: center; padding: 0.375rem 0.5rem; font-size: 0.875rem; cursor: default;">
-                                    <span>Team</span>
-                                </div>
-                                <div style="display: flex; align-items: center; padding: 0.375rem 0.5rem; font-size: 0.875rem; cursor: default;">
-                                    <span>Invite users</span>
-                                </div>
-                                <div style="height: 1px; background-color: #e5e7eb; margin: 0.25rem -0.25rem;"></div>
-                                <div style="display: flex; align-items: center; padding: 0.375rem 0.5rem; font-size: 0.875rem; cursor: default; color: #ef4444;">
-                                    <span>Log out</span>
+                        <!-- Working Demo -->
+                        <div>
+                            <p style="font-size: 0.875rem; color: #6b7280; margin-bottom: 1rem;">
+                                Interactive demo showing how shadcn/ui dropdown appears:
+                            </p>
+                            <div style="position: relative; display: inline-block;">
+                                <button class="btn btn-secondary" onclick="toggleShadcnDemo(this)">
+                                    Open
+                                    <span style="margin-left: 0.5rem; transition: transform 0.2s;" id="chevron">▼</span>
+                                </button>
+                                
+                                <div id="demo-dropdown" data-radix-dropdown-menu-content style="display: none; position: absolute; top: 100%; left: 0; margin-top: 0.25rem; z-index: 1000;">
+                                    <div data-radix-dropdown-menu-label>My Account</div>
+                                    <div data-radix-dropdown-menu-item onmouseenter="this.setAttribute('data-highlighted', 'true')" onmouseleave="this.setAttribute('data-highlighted', 'false')">
+                                        <span>Profile</span>
+                                        <span data-radix-dropdown-menu-shortcut>⇧⌘P</span>
+                                    </div>
+                                    <div data-radix-dropdown-menu-item onmouseenter="this.setAttribute('data-highlighted', 'true')" onmouseleave="this.setAttribute('data-highlighted', 'false')">
+                                        <span>Settings</span>
+                                        <span data-radix-dropdown-menu-shortcut>⌘,</span>
+                                    </div>
+                                    <div data-radix-dropdown-menu-separator></div>
+                                    <div data-radix-dropdown-menu-item onmouseenter="this.setAttribute('data-highlighted', 'true')" onmouseleave="this.setAttribute('data-highlighted', 'false')">
+                                        <span>Team</span>
+                                    </div>
+                                    <div data-radix-dropdown-menu-item onmouseenter="this.setAttribute('data-highlighted', 'true')" onmouseleave="this.setAttribute('data-highlighted', 'false')">
+                                        <span>Invite users</span>
+                                    </div>
+                                    <div data-radix-dropdown-menu-separator></div>
+                                    <div data-radix-dropdown-menu-item onmouseenter="this.setAttribute('data-highlighted', 'true')" onmouseleave="this.setAttribute('data-highlighted', 'false')" style="color: #ef4444;">
+                                        <span>Log out</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Code example -->
-                        <div style="background: #f9fafb; padding: 1rem; border: 1px solid #e5e7eb; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; max-width: 100%; overflow-x: auto;">
-{`<DropdownMenu>
-  <DropdownMenuTrigger asChild>
-    <Button variant="outline">Open</Button>
-  </DropdownMenuTrigger>
-  <DropdownMenuContent className="w-56">
-    <DropdownMenuLabel>My Account</DropdownMenuLabel>
-    <DropdownMenuSeparator />
-    <DropdownMenuItem>
+                        <!-- Installation Instructions -->
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">Installation</h4>
+                            <div style="background: #f9fafb; padding: 1rem; border: 1px solid #e5e7eb; font-family: monospace; font-size: 0.8125rem;">npx shadcn@latest add dropdown-menu</div>
+                        </div>
+
+                        <!-- Usage Example -->
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem;">Usage</h4>
+                            <div style="background: #f9fafb; padding: 1rem; border: 1px solid #e5e7eb; font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; overflow-x: auto;">&lt;DropdownMenu&gt;
+  &lt;DropdownMenuTrigger asChild&gt;
+    &lt;Button variant="outline"&gt;Open&lt;/Button&gt;
+  &lt;/DropdownMenuTrigger&gt;
+  &lt;DropdownMenuContent className="w-56"&gt;
+    &lt;DropdownMenuLabel&gt;My Account&lt;/DropdownMenuLabel&gt;
+    &lt;DropdownMenuSeparator /&gt;
+    &lt;DropdownMenuItem&gt;
       Profile
-      <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-    </DropdownMenuItem>
-    <DropdownMenuItem>Settings</DropdownMenuItem>
-  </DropdownMenuContent>
-</DropdownMenu>`}</div>
+      &lt;DropdownMenuShortcut&gt;⇧⌘P&lt;/DropdownMenuShortcut&gt;
+    &lt;/DropdownMenuItem&gt;
+    &lt;DropdownMenuItem&gt;Settings&lt;/DropdownMenuItem&gt;
+  &lt;/DropdownMenuContent&gt;
+&lt;/DropdownMenu&gt;</div>
+                        </div>
                     </div>
                 </div>
 
@@ -552,13 +561,33 @@
     </footer>
 
     <script>
-        // Minimal JavaScript for design system demos only
-        // The actual shadcn/ui dropdown uses Radix UI primitives
-        
+        // Demo function for shadcn/ui dropdown showcase
+        function toggleShadcnDemo(button) {
+            const dropdown = document.getElementById('demo-dropdown');
+            const chevron = document.getElementById('chevron');
+            const isVisible = dropdown.style.display !== 'none';
+            
+            if (isVisible) {
+                dropdown.style.display = 'none';
+                chevron.style.transform = 'rotate(0deg)';
+            } else {
+                dropdown.style.display = 'block';
+                chevron.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('demo-dropdown');
+            const button = event.target.closest('button[onclick*="toggleShadcnDemo"]');
+            
+            if (!button && !dropdown.contains(event.target)) {
+                dropdown.style.display = 'none';
+                document.getElementById('chevron').style.transform = 'rotate(0deg)';
+            }
+        });
+
         console.log('Pedal Peak Design System loaded');
-        
-        // Any demo-specific functionality can go here
-        // Actual shadcn/ui dropdowns don't need custom JavaScript
     </script>
 </body>
 </html>
